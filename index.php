@@ -1,22 +1,19 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>BF2</title>
     </head>
     <body>
+        
 <?
 require 'vendor/autoload.php';
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
 
 // Show all information, defaults to INFO_ALL
-// phpinfo();
+//phpinfo();
+
 ?>
 
 <h2>
@@ -40,7 +37,11 @@ $bucket = 'rsm-bingo';
 $keyname = 'test.tst';
 
 // Instantiate the client.
-$s3 = S3Client::factory();
+// $s3 = S3Client::factory();
+$s3 = new Aws\S3\S3Client([
+    'region'  => 'eu-west-1',
+    'version' => 'latest'
+]);
 
 // Use the high-level iterators (returns ALL of your objects).
 try {
@@ -48,9 +49,9 @@ try {
         'Bucket' => $bucket
     ));
 
-    echo "Keys retrieved!\n";
+    echo "Keys retrieved!\n<br>";
     foreach ($objects as $object) {
-        echo $object['Key'] . "\n";
+        echo $object['Key'] . "\n<br>";
     }
 } catch (S3Exception $e) {
     echo $e->getMessage() . "\n";
@@ -62,10 +63,10 @@ try {
 
     echo "Keys retrieved!\n";
     foreach ($result['Contents'] as $object) {
-        echo $object['Key'] . "\n";
+        echo $object['Key'] . "\n<br>";
     }
 } catch (S3Exception $e) {
-    echo $e->getMessage() . "\n";
+    echo $e->getMessage() . "\n<br>";
 }
 
 
