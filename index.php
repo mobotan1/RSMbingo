@@ -37,7 +37,7 @@ body {
     line-height: 1;
 }
 
-h2{
+h2 {
     font-family:Din;
     font-size:24px;
 }
@@ -47,7 +47,7 @@ table.bingo-table {
     border-collapse: separate;
     border-spacing: 10px 10px;
     margin-bottom:30px;
-    width: 750px;
+    width: 90%;
 }
 
 .bingo-table th {
@@ -77,7 +77,7 @@ table.bingo-table {
     /* 75 for 4x4*/
     /* 90 for 1x2 */
     /* 150 for 1x1 */
-    width: 750px;
+    width: 100%;
     height:100px;
     background-color:#fff;
 }
