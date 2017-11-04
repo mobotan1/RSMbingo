@@ -110,10 +110,8 @@ table.bingo-table {
 }
 </style>
 </head>
+    
 <body>
-      
-<script src="media/js/home.js"></script>
-
 <table class="bingo-table" id="tablebackground">
     <tr>
         <th class="celltitle">
@@ -142,6 +140,35 @@ table.bingo-table {
             <h1>Cards</h1>
             <h2><a href="edit.php">Create a new card here</a></h2>
         <td>
+    </tr>
+    <tr>
+        <td class="cell">  
+            <h1>The best cards</h1>    
+            <h2><a href="#">1</a></h2>
+            <h2><a href="#">2</a></h2>
+            <h2><a href="#">3</a></h2>
+            <h2><a href="#">4</a></h2>
+            <h2><a href="#">5</a></h2>
+            
+            <?
+            //require 'vendor/autoload.php';
+            //use Aws\S3\S3Client;
+            //use Aws\S3\Exception\S3Exception;
+            
+            // Instantiate the client.    
+            //$bucket = 'rsm-bingo';
+            //$configfile = 'config.json';
+            //$s3 = new Aws\S3\S3Client(['region'  => 'eu-west-1','version' => 'latest']);
+            
+            //Use the high-level iterators (returns ALL of your objects).
+            //try { $objects = $s3->getIterator('ListObjects', array('Bucket' => $bucket));
+            //    foreach ($objects as $object) {
+            //        echo "<h2>" . $object['Key'] . "\n</h2>";
+            //    }
+            //} catch (S3Exception $e) { echo $e->getMessage() . "\n"; }
+            
+            ?>
+        </td>
     </tr>
 </table>
 
