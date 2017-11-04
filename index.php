@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RSM Bingo Game</title>
+<title>RSM Bingo | Starting page</title>
 <meta name="description" content="Bingo card game"/>
 
 <style type="text/css">
@@ -117,7 +117,7 @@ table.bingo-table {
         <th class="celltitle">
             <h1>Play</h1>
             <form action="play.php" method="get" id="play-form">
-                <h2>Game ID number: <input type='text' size=6 name='uid' value='' /></h2>
+                <h2>Card ID number: <input type='text' size=6 name='uid' value='' /></h2>
                 <h2>Your name: <input type='text' size=11 name='pname' value='' /></h2>
                 <input type="submit" name="p" value="Play" id="submit" />
             </form>
@@ -128,7 +128,7 @@ table.bingo-table {
             <h1>Edit</h1>
             <h2>You can edit existing cards</h2>
             <form action="edit.php" method="get" id="load-form">    
-                <h2>Type your game ID number: 
+                <h2>Type your card ID number: 
                     <input type='text' name='uid' size=6 value='' />
                     <input type="submit" name="l" value="Load" id="submit" />
                 </h2>

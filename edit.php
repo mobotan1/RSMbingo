@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RSM Bingo Game</title>
+<title>RSM Bingo | Edit</title>
 <meta name="description" content="Bingo card game"/>
 
 <link rel="stylesheet" type="text/css" href="media/css/reset.css" />
@@ -203,7 +203,7 @@
     
     <h1>Play</h1>
     <form action="play.php" method="get" id="play-form">
-        <p>Game ID number: <input type='text' size=6 name='uid' value='<? print($FORM_DATA["uid"]); ?>' /></p>
+        <p>Card ID number: <input type='text' size=6 name='uid' value='<? print($FORM_DATA["uid"]); ?>' /></p>
         <p>Your name: <input type='text' size=11 name='pname' value='' /></p>
         <input type="submit" name="p" value="Play" id="submit" />
     </form>
