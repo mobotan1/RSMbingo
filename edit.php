@@ -44,7 +44,7 @@
         "word-4-0" => "", "word-4-1" => "", "word-4-2" => "", "word-4-3" => "", "word-4-4" => "");
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        echo "POST";        
+        //echo "POST";        
 
         //Fill FORM_DATA var with data from _POST
         $FORM_DATA["uid"] = $_POST["uid"];
@@ -121,8 +121,9 @@
     }
    else{
        // let's find the UID of Bingo Card (it should be passed with GET method
-       if(is_numeric($_GET["uid"])) {
-           echo "GET";
+       if(isset($_GET["uid"])) {
+           //echo "GET";
+           //is_numeric()
            $uid = $_GET['uid'];
            if ($s3->doesObjectExist($bucket, $uid . '.json') == TRUE){
                $res_s3 = $s3->getObject(array('Bucket'=>$bucket,'Key'=>$uid . '.json'));

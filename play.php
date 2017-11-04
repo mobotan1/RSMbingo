@@ -314,17 +314,18 @@ table.bingo-table {
         
 <?
     require 'vendor/autoload.php';
-    use Aws\S3\S3Client;
-    use Aws\S3\Exception\S3Exception;
+    //use Aws\S3\S3Client;
+    //use Aws\S3\Exception\S3Exception;
     
     // Instantiate the client.
     $bucket = 'rsm-bingo';
     $s3 = new Aws\S3\S3Client(['region'  => 'eu-west-1','version' => 'latest']);
 
-    if(is_numeric($_GET["uid"])) {
-        $uid = $_GET['uid'];
-        $pname = $_GET['pname'];
-        if ($s3->doesObjectExist($bucket, $uid . '.json') == TRUE){
+    if(isset($_GET["uid"])) {
+        if (is_numeric($_GET['uid'])){$uid = $_GET['uid'];}
+        if (isset($_GET['pname'])){ $pname = $_GET['pname'];} else { $pname = ""; }
+        
+        if ($s3->doesObjectExist($bucket, $uid . '.json') === TRUE){
             $res_s3 = $s3->getObject(array('Bucket'=>$bucket,'Key'=>$uid . '.json'));
             $Loaded_Data = json_decode($res_s3->get("Body"), true);    
                
@@ -403,6 +404,7 @@ table.bingo-table {
             <td class="cell  " style="" id="w9766737"><? print($FORM_DATA["word-4-4"]); ?></td>
         </tr>
     </table>
+    <p id="additional-set"><a href="/">Back on the main page</a></p>
 
 <div id="hidden">
     <!-- used to get the CSS info, so don't put anything in here -->
