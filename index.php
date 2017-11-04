@@ -138,7 +138,11 @@ table.bingo-table {
     <tr>
         <td class="cell">      
             <h1>Cards</h1>
-            <h2><a href="edit.php">Create a new card here</a></h2>
+            <h2>You can create your own brand new card
+                <form method="get" action="/edit.php">
+                    <button type="submit" id="submit">New card</button>
+                </form>
+            </h2>
         <td>
     </tr>
     <tr>
