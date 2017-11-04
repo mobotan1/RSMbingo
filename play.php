@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bingo RSM, v.1</title>
+<title>Bingo RSM, PLAY</title>
 <meta name="description" content="" />
 
 <script type="text/javascript">
@@ -306,47 +306,101 @@ table.bingo-table {
     font-size:24px;
 }
 </style>
-
 </head>
 <body>
+    
+    
+    
+        
+<?
+    require 'vendor/autoload.php';
+    use Aws\S3\S3Client;
+    use Aws\S3\Exception\S3Exception;
+    
+    // Instantiate the client.
+    $bucket = 'rsm-bingo';
+    $s3 = new Aws\S3\S3Client(['region'  => 'eu-west-1','version' => 'latest']);
+
+    if(is_numeric($_GET["uid"])) {
+        $uid = $_GET['uid'];
+        $pname = $_GET['pname'];
+        if ($s3->doesObjectExist($bucket, $uid . '.json') == TRUE){
+            $res_s3 = $s3->getObject(array('Bucket'=>$bucket,'Key'=>$uid . '.json'));
+            $Loaded_Data = json_decode($res_s3->get("Body"), true);    
+               
+            //Fill FORM_DATA var with data from _GET
+            $FORM_DATA["name"] = $Loaded_Data["name"];
+            $FORM_DATA["size"] = $Loaded_Data["size"];
+            $FORM_DATA["word-0-0"] = $Loaded_Data["word-0-0"];
+            $FORM_DATA["word-0-1"] = $Loaded_Data["word-0-1"];
+            $FORM_DATA["word-0-2"] = $Loaded_Data["word-0-2"];
+            $FORM_DATA["word-0-3"] = $Loaded_Data["word-0-3"];
+            $FORM_DATA["word-0-4"] = $Loaded_Data["word-0-4"];
+            $FORM_DATA["word-1-0"] = $Loaded_Data["word-1-0"];
+            $FORM_DATA["word-1-1"] = $Loaded_Data["word-1-1"];
+            $FORM_DATA["word-1-2"] = $Loaded_Data["word-1-2"];
+            $FORM_DATA["word-1-3"] = $Loaded_Data["word-1-3"];
+            $FORM_DATA["word-1-4"] = $Loaded_Data["word-1-4"];
+            $FORM_DATA["word-2-0"] = $Loaded_Data["word-2-0"];
+            $FORM_DATA["word-2-1"] = $Loaded_Data["word-2-1"];
+            $FORM_DATA["word-2-2"] = $Loaded_Data["word-2-2"];
+            $FORM_DATA["word-2-3"] = $Loaded_Data["word-2-3"];
+            $FORM_DATA["word-2-4"] = $Loaded_Data["word-2-4"];
+            $FORM_DATA["word-3-0"] = $Loaded_Data["word-3-0"];
+            $FORM_DATA["word-3-1"] = $Loaded_Data["word-3-1"];
+            $FORM_DATA["word-3-2"] = $Loaded_Data["word-3-2"];
+            $FORM_DATA["word-3-3"] = $Loaded_Data["word-3-3"];
+            $FORM_DATA["word-3-4"] = $Loaded_Data["word-3-4"];
+            $FORM_DATA["word-4-0"] = $Loaded_Data["word-4-0"];
+            $FORM_DATA["word-4-1"] = $Loaded_Data["word-4-1"];
+            $FORM_DATA["word-4-2"] = $Loaded_Data["word-4-2"];
+            $FORM_DATA["word-4-3"] = $Loaded_Data["word-4-3"];
+            $FORM_DATA["word-4-4"] = $Loaded_Data["word-4-4"];
+        }
+    }
+?> 
+    
     <table class="bingo-table" id="tablebackground">
         <thead>
-            <tr><th class="celltitle " colspan="5">&lt;Enter your name&gt; Bingo</th></tr>
+            <tr><th class="celltitle " colspan="5">
+                Player: <? print($pname); ?><br>
+                Bingo: <? print($FORM_DATA["name"]); ?>    
+            </th></tr>
         </thead>
         <tr>
-            <td class="cell  " style="" id="w9766744">RSM</td>
-            <td class="cell  " style="" id="w9766751">Rotterdam</td>
-            <td class="cell  " style="" id="w9766731">School</td>
-            <td class="cell  " style="" id="w9766738">of</td>
-            <td class="cell  " style="" id="w9766752">Management</td>
+            <td class="cell  " style="" id="w9766744"><? print($FORM_DATA["word-0-0"]); ?></td>
+            <td class="cell  " style="" id="w9766751"><? print($FORM_DATA["word-0-1"]); ?></td>
+            <td class="cell  " style="" id="w9766731"><? print($FORM_DATA["word-0-2"]); ?></td>
+            <td class="cell  " style="" id="w9766738"><? print($FORM_DATA["word-0-3"]); ?></td>
+            <td class="cell  " style="" id="w9766752"><? print($FORM_DATA["word-0-4"]); ?></td>
         </tr>                         
         <tr>                                    
-            <td class="cell  " style="" id="w9766746">MBA</td>                                    
-            <td class="cell  " style="" id="w9766745">18</td>                                    
-            <td class="cell  " style="" id="w9766743">class</td>
-            <td class="cell  " style="" id="w9766732">in</td>
-            <td class="cell  " style="" id="w9766747">action</td>
+            <td class="cell  " style="" id="w9766746"><? print($FORM_DATA["word-1-0"]); ?></td>                                    
+            <td class="cell  " style="" id="w9766745"><? print($FORM_DATA["word-1-1"]); ?></td>                                    
+            <td class="cell  " style="" id="w9766743"><? print($FORM_DATA["word-1-2"]); ?></td>
+            <td class="cell  " style="" id="w9766732"><? print($FORM_DATA["word-1-3"]); ?></td>
+            <td class="cell  " style="" id="w9766747"><? print($FORM_DATA["word-1-4"]); ?></td>
         </tr>
         <tr>
-            <td class="cell  " style="" id="w9766735">This</td>
-            <td class="cell  " style="" id="w9766739">is</td>
-            <td class="cell  " style="" id="w9766728">the</td>
-            <td class="cell  " style="" id="w9766740">first</td>
-            <td class="cell  " style="" id="w9766749">Text size fits</td>
+            <td class="cell  " style="" id="w9766735"><? print($FORM_DATA["word-2-0"]); ?></td>
+            <td class="cell  " style="" id="w9766739"><? print($FORM_DATA["word-2-1"]); ?></td>
+            <td class="cell  " style="" id="w9766728"><? print($FORM_DATA["word-2-2"]); ?></td>
+            <td class="cell  " style="" id="w9766740"><? print($FORM_DATA["word-2-3"]); ?></td>
+            <td class="cell  " style="" id="w9766749"><? print($FORM_DATA["word-2-4"]); ?></td>
         </tr>
         <tr>
-            <td class="cell  " style="" id="w9766734">Centred font</td>
-            <td class="cell  " style="" id="w9766730">empty</td>
-            <td class="cell  " style="" id="w9766733">FREE!</td>
-            <td class="cell  " style="" id="w9766741">Din</td>
-            <td class="cell  " style="" id="w9766750">?</td>
+            <td class="cell  " style="" id="w9766734"><? print($FORM_DATA["word-3-0"]); ?></td>
+            <td class="cell  " style="" id="w9766730"><? print($FORM_DATA["word-3-1"]); ?></td>
+            <td class="cell  " style="" id="w9766733"><? print($FORM_DATA["word-3-2"]); ?></td>
+            <td class="cell  " style="" id="w9766741"><? print($FORM_DATA["word-3-3"]); ?></td>
+            <td class="cell  " style="" id="w9766750"><? print($FORM_DATA["word-3-4"]); ?></td>
         </tr>
         <tr>
-            <td class="cell  " style="" id="w9766736">ALL CAPS!</td>
-            <td class="cell  " style="" id="w9766729">Background colour for selection</td>
-            <td class="cell  " style="" id="w9766742">...</td>
-            <td class="cell  " style="" id="w9766748">Text size fits the square here as well</td>
-            <td class="cell  " style="" id="w9766737">What's next?</td>
+            <td class="cell  " style="" id="w9766736"><? print($FORM_DATA["word-4-0"]); ?></td>
+            <td class="cell  " style="" id="w9766729"><? print($FORM_DATA["word-4-1"]); ?></td>
+            <td class="cell  " style="" id="w9766742"><? print($FORM_DATA["word-4-2"]); ?></td>
+            <td class="cell  " style="" id="w9766748"><? print($FORM_DATA["word-4-3"]); ?></td>
+            <td class="cell  " style="" id="w9766737"><? print($FORM_DATA["word-4-4"]); ?></td>
         </tr>
     </table>
 
@@ -358,11 +412,5 @@ table.bingo-table {
     <!-- used to test if a single word overflows -->
     <span id="width-test" class="cell "></span>
 </div>
-
-        
-    
-    
-
 </body>
 </html>
-
