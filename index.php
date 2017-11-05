@@ -16,8 +16,8 @@
     <div class="celltitle">
         <h1>Play</h1>
         <form action="play.php" method="get" id="play-form">
-            <h2>Card ID number: <input type='text' size=5 name='uid' value='' maxlength="6" /></h2>
-            <h2>Your name: <input type='text' size=13 name='pname' value='' maxlength="16" /></h2>
+            <input type='text' size=5 name='uid' value='' maxlength="6" placeholder="Card ID" /> <br>
+            <input type='text' size=13 name='pname' value='' maxlength="16" placeholder="Your name" />
             <input type="submit" name="p" value="Play" id="submit" />
         </form>
     </div>
@@ -25,10 +25,8 @@
         <h1>Edit</h1>
         <h2>You can edit existing cards</h2>
         <form action="edit.php" method="get" id="load-form">    
-            <h2>Type your card ID number: 
-                <input type='text' name='uid' size=6 value='' maxlength="6" />
-                <input type="submit" name="l" value="Load" id="submit" />
-            </h2>
+            <input type='text' name='uid' size=6 value='' maxlength="6" placeholder="Card ID" />
+            <input type="submit" name="l" value="Load" id="submit" />
         </form>
     </div>
     <div class="celltitle">
