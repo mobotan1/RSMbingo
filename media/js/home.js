@@ -5,22 +5,8 @@ $(document).ready(function(){
         }.bind(this), 1);
     });
 
-
-    $('#more-link').click(function(){
-        $('#more').slideDown('slow');
-        $('#more textarea').focus()
-        $(this).parent().remove();
-        return false;
-    });
-
-    if($('#more textarea').val() != ""){
-        $('#more-link').click();
-    }
-
     $('#clear-link a').click(function(){
         $('.card textarea').val("");
-        $('.card textarea').css("background-image", "")
-        $('.card textarea').css("background-image", "")
         $('.card input[type="hidden"]').val("");
         $('input[type=text]').val("");
         $('input[name=name]').focus()
@@ -31,9 +17,8 @@ $(document).ready(function(){
         return $(".card tbody tr:first td").length;
     }
 
-
     function rebuildGrid(new_size, min_count){
-        // get all the text and images in the cells
+        // get all the text in the cells
         var cells = [];
         var length = $(".card tbody td").find("textarea").length;
         for(var i = 0; i < length; i++){

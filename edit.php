@@ -12,9 +12,6 @@
 <script type="text/javascript" src="media/js/render.js"></script>
 <script type="text/javascript" src="media/js/jquery.js"></script>
 <script type="text/javascript" src="media/js/tooltip.js"></script>
-<style type="text/css">
-</style>
-
 </head>
 <body>
     
@@ -186,25 +183,41 @@
 
 <div id="instructions">
     <h1>Cards</h1>
+    <? if ($is_update === TRUE) { ?>
+    <p>You can update this card.</p>
+    <p><strong>Instructions:</strong> 
+    Change any words in the grid on the left. 
+    Update a title of the game.
+    Then click the Update button.</p>  <br>
+        
+    <p>Or, you can create a new game</p>
+    <form method="get" action="/edit.php">
+        <input type="submit" name="p" value="New card" id="submit" />
+    </form>
+    
+    
+    <? } elseif ($is_update === FALSE) { ?>
     <p>You can create a new card.</p>
     <p><strong>Instructions:</strong> 
     Type your words into the grid on the left. 
     You can give your game a title.
-    Then click the Generate/Update button.</p> 
+    Then click the Generate button.</p>
+    <? } ?>
+    
     
     <h1>Load</h1>
     <p>You can load an existing card.</p>
     <p><strong>Instructions:</strong> 
     Type your game ID number: 
     <form action="<?php $_PHP_SELF ?>" method="get" id="load-form">
-    <input type='text' name='uid' value='' />
+    <input type='text' name='uid' value='' maxlength="6" />
     <input type="submit" name="l" value="Load" id="submit" />
     </form>
     
     <h1>Play</h1>
     <form action="play.php" method="get" id="play-form">
-        <p>Card ID number: <input type='text' size=6 name='uid' value='<? print($FORM_DATA["uid"]); ?>' /></p>
-        <p>Your name: <input type='text' size=11 name='pname' value='' /></p>
+        <p>Card ID number: <input type='text' size=6 name='uid' value='<? print($FORM_DATA["uid"]); ?>' maxlength="6" /></p>
+        <p>Your name: <input type='text' size=11 name='pname' value='' maxlength="16" /></p>
         <input type="submit" name="p" value="Play" id="submit" />
     </form>
 </div>
@@ -259,16 +272,21 @@
             </tr>
         </tbody>
     </table>
+    
+    <!--
     <div><a href="#" id="more-link"><strong>Paste in a list of words</strong></a></div>
     <div id="more">
         <p><strong>One word per line</strong></p>
         <textarea cols="40" id="id_extra_words" name="extra_words" rows="10"></textarea>
     </div>
+    --> 
     
+    <!--
     <label>
         <input id="id_has_column_affinity" name="has_column_affinity" type="checkbox" /> 
         <acronym title="By default, Bingo will randomly scatter your items across all the columns. If you want to scatter your items within their column only (like in traditional bingo), check this box. When you generate your cards, the call list will include the column name">Shuffle items <em>only</em> within their column</acronym> 
     </label>
+    --> 
     
     <input type="submit" name="submit" value="<? if ($is_update == TRUE){ print("UPDATE");} else { print("Generate");} ?>" id="submit" />
     </form>

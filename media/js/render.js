@@ -1,4 +1,4 @@
-function setFontSize(){
+    function setFontSize(){
     // the demo element is an empty element with the proper CSS class
     var demo = $('#has-cell');
     var WIDTH = parseInt(demo.css('width'));
@@ -40,7 +40,6 @@ function setFontSize(){
             $height_test.css('font-size', font_size + "px");
             $width_test.css('font-size', font_size + "px");
             var overflows = hasScrollbar(height_test) || $width_test.outerWidth() > WIDTH;
-            //var overflows = hasScrollbar(height_test) || $width_test.outerWidth() > WIDTH;
             if(overflows){
                 font_size -= delta;
             } else if(j == binary_iters - 1) {
@@ -72,4 +71,4 @@ function getLongestWord($element){
 
 function hasScrollbar(element){ 
     return element.clientHeight < element.scrollHeight;
-}
+}  
