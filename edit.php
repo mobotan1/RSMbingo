@@ -207,17 +207,16 @@
     
     <h1>Load</h1>
     <p>You can load an existing card.</p>
-    <p><strong>Instructions:</strong> 
     Type your game ID number: 
     <form action="<?php $_PHP_SELF ?>" method="get" id="load-form">
-    <input type='text' name='uid' value='' maxlength="6" />
+    <input type='text' name='uid' value='' maxlength="6" placeholder="Card ID" />
     <input type="submit" name="l" value="Load" id="submit" />
     </form>
     
     <h1>Play</h1>
     <form action="play.php" method="get" id="play-form">
-        <p>Card ID number: <input type='text' size=6 name='uid' value='<? print($FORM_DATA["uid"]); ?>' maxlength="6" /></p>
-        <p>Your name: <input type='text' size=11 name='pname' value='' maxlength="16" /></p>
+        <p>Card ID: <input type='text' size=6 name='uid' value='<? print($FORM_DATA["uid"]); ?>' maxlength="6" placeholder="Card ID" /></p>
+        <p>Name: <input type='text' size=11 name='pname' value='' maxlength="16" placeholder="Your name" /></p>
         <input type="submit" name="p" value="Play" id="submit" />
     </form>
 </div>
@@ -228,7 +227,7 @@
     <table class="card">
         <thead>
             <tr>
-                <th />ID: <input type='text' name='uid' size=4 value='<? print($FORM_DATA["uid"]); ?>'readonly></th>
+                <th />ID: <input type='text' name='uid' size=4 value='<? print($FORM_DATA["uid"]); ?>'readonly placeholder="-"></th>
                 <th colspan="3" class="colspan"><input id="name" maxlength="64" name="name" type="text" value="<? print($FORM_DATA["name"]); ?>" /></th>
                 <th><select id="id_size" name="size">
                         <option value="5">5x5</option>
