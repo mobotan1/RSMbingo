@@ -16,7 +16,7 @@
     <div class="celltitle">
         <h1>Play</h1>
         <form action="play.php" method="get" id="play-form">
-            <h2>Card ID number: <input type='text' size=6 name='uid' value='' maxlength="6" /></h2>
+            <h2>Card ID number: <input type='text' size=5 name='uid' value='' maxlength="6" /></h2>
             <h2>Your name: <input type='text' size=13 name='pname' value='' maxlength="16" /></h2>
             <input type="submit" name="p" value="Play" id="submit" />
         </form>
