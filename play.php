@@ -243,7 +243,7 @@ $(window).resize(function(){
     }else{
         var size = parseInt((height-offset) / t_size)-5;
     }
-    document.write("w="+width+", h"+height+", offset="+offset+", size="+size);
+    //document.write("w="+width+", h"+height+", offset="+offset+", size="+size);
 </script>
     
 </body>
