@@ -12,7 +12,6 @@
 
 <script type="text/javascript" src="media/js/jquery.js"></script>
 <script type="text/javascript" src="media/js/render.js"></script>
-<script type="text/javascript" src="media/js/fittext.js"></script>
 
 <script type="text/javascript">
 function CreateArr(n) {
@@ -74,21 +73,21 @@ $(document).ready(function(){
 $(window).resize(function(){
     var height = $(window).height();
     var width = $(window).width();
-    //var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    //var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-    var offset = $('.cell:first').position().top;  //offset from top
-    var t_size = $('.bingo-table tr:last td').length;   //num of cols
+    var pixr = window.getDevicePixelRatio();
+    var offset = parseInt($('.cell:first').position().top) / pixr; //offset from top
+    
+    console.log(pixr + " , " +$('.cell:first').position().top + ", " + offset);
+    
+    var t_size = $('.bingo-table tr:last td').length;    //num of cols
     if (height > width){
         var size = parseInt(width / t_size);
     }else{
         var size = parseInt((height-offset) / t_size);
     }
-    console.log("w="+width+", h"+height);
-    console.log("offset="+offset);
-    console.log("size="+size);
+    //console.log("w="+width+", h="+height + ", offset="+offset + ", size="+(size-10));
     
-    width = size-10; //*1.2;
-    height = width * 0.85;
+    width = size - 5; //*1.2;
+    height = width * 0.9;
 
     $('.cell, .header').css("width", width + "px");
     $('.cell').css("height", height + "px");
@@ -96,9 +95,7 @@ $(window).resize(function(){
     setFontSize();
     
     //set font size of title text to fit in one row
-    //$("#titlethcell").fitText(1.6);
-    //$("#titlethcell").fitText(1.1, { minFontSize: '12px', maxFontSize: '32px' });   
-    var th_cell = document.getElementById('titlethcell');
+     var th_cell = document.getElementById('titlethcell');
     var fstyle = window.getComputedStyle(th_cell, null).getPropertyValue('font-size');
     var th_fsize = parseFloat(fstyle); 
     var tst_w = (document.getElementById("th-test").clientWidth + 1);
@@ -171,39 +168,39 @@ $(window).resize(function(){
             </th></tr>
         </thead>
         <tr>
-            <td class="cell  " style="" id="w00"><? print($FORM_DATA["word-0-0"]); ?></td>
-            <td class="cell  " style="" id="w01"><? print($FORM_DATA["word-0-1"]); ?></td>
-            <td class="cell  " style="" id="w02"><? print($FORM_DATA["word-0-2"]); ?></td>
-            <td class="cell  " style="" id="w03"><? print($FORM_DATA["word-0-3"]); ?></td>
-            <td class="cell  " style="" id="w04"><? print($FORM_DATA["word-0-4"]); ?></td>
+            <td class="cell" style="" id="w00"><? print($FORM_DATA["word-0-0"]); ?></td>
+            <td class="cell" style="" id="w01"><? print($FORM_DATA["word-0-1"]); ?></td>
+            <td class="cell" style="" id="w02"><? print($FORM_DATA["word-0-2"]); ?></td>
+            <td class="cell" style="" id="w03"><? print($FORM_DATA["word-0-3"]); ?></td>
+            <td class="cell" style="" id="w04"><? print($FORM_DATA["word-0-4"]); ?></td>
         </tr>                         
         <tr>                                    
-            <td class="cell  " style="" id="w10"><? print($FORM_DATA["word-1-0"]); ?></td>                                    
-            <td class="cell  " style="" id="w11"><? print($FORM_DATA["word-1-1"]); ?></td>                                    
-            <td class="cell  " style="" id="w12"><? print($FORM_DATA["word-1-2"]); ?></td>
-            <td class="cell  " style="" id="w13"><? print($FORM_DATA["word-1-3"]); ?></td>
-            <td class="cell  " style="" id="w14"><? print($FORM_DATA["word-1-4"]); ?></td>
+            <td class="cell" style="" id="w10"><? print($FORM_DATA["word-1-0"]); ?></td>                                    
+            <td class="cell" style="" id="w11"><? print($FORM_DATA["word-1-1"]); ?></td>                                    
+            <td class="cell" style="" id="w12"><? print($FORM_DATA["word-1-2"]); ?></td>
+            <td class="cell" style="" id="w13"><? print($FORM_DATA["word-1-3"]); ?></td>
+            <td class="cell" style="" id="w14"><? print($FORM_DATA["word-1-4"]); ?></td>
         </tr>
         <tr>
-            <td class="cell  " style="" id="w20"><? print($FORM_DATA["word-2-0"]); ?></td>
-            <td class="cell  " style="" id="w21"><? print($FORM_DATA["word-2-1"]); ?></td>
-            <td class="cell  " style="" id="w22"><? print($FORM_DATA["word-2-2"]); ?></td>
-            <td class="cell  " style="" id="w23"><? print($FORM_DATA["word-2-3"]); ?></td>
-            <td class="cell  " style="" id="w24"><? print($FORM_DATA["word-2-4"]); ?></td>
+            <td class="cell" style="" id="w20"><? print($FORM_DATA["word-2-0"]); ?></td>
+            <td class="cell" style="" id="w21"><? print($FORM_DATA["word-2-1"]); ?></td>
+            <td class="cell" style="" id="w22"><? print($FORM_DATA["word-2-2"]); ?></td>
+            <td class="cell" style="" id="w23"><? print($FORM_DATA["word-2-3"]); ?></td>
+            <td class="cell" style="" id="w24"><? print($FORM_DATA["word-2-4"]); ?></td>
         </tr>
         <tr>
-            <td class="cell  " style="" id="w30"><? print($FORM_DATA["word-3-0"]); ?></td>
-            <td class="cell  " style="" id="w31"><? print($FORM_DATA["word-3-1"]); ?></td>
-            <td class="cell  " style="" id="w32"><? print($FORM_DATA["word-3-2"]); ?></td>
-            <td class="cell  " style="" id="w33"><? print($FORM_DATA["word-3-3"]); ?></td>
-            <td class="cell  " style="" id="w34"><? print($FORM_DATA["word-3-4"]); ?></td>
+            <td class="cell" style="" id="w30"><? print($FORM_DATA["word-3-0"]); ?></td>
+            <td class="cell" style="" id="w31"><? print($FORM_DATA["word-3-1"]); ?></td>
+            <td class="cell" style="" id="w32"><? print($FORM_DATA["word-3-2"]); ?></td>
+            <td class="cell" style="" id="w33"><? print($FORM_DATA["word-3-3"]); ?></td>
+            <td class="cell" style="" id="w34"><? print($FORM_DATA["word-3-4"]); ?></td>
         </tr>
         <tr>
-            <td class="cell  " style="" id="w40"><? print($FORM_DATA["word-4-0"]); ?></td>
-            <td class="cell  " style="" id="w41"><? print($FORM_DATA["word-4-1"]); ?></td>
-            <td class="cell  " style="" id="w42"><? print($FORM_DATA["word-4-2"]); ?></td>
-            <td class="cell  " style="" id="w43"><? print($FORM_DATA["word-4-3"]); ?></td>
-            <td class="cell  " style="" id="w44"><? print($FORM_DATA["word-4-4"]); ?></td>
+            <td class="cell" style="" id="w40"><? print($FORM_DATA["word-4-0"]); ?></td>
+            <td class="cell" style="" id="w41"><? print($FORM_DATA["word-4-1"]); ?></td>
+            <td class="cell" style="" id="w42"><? print($FORM_DATA["word-4-2"]); ?></td>
+            <td class="cell" style="" id="w43"><? print($FORM_DATA["word-4-3"]); ?></td>
+            <td class="cell" style="" id="w44"><? print($FORM_DATA["word-4-4"]); ?></td>
         </tr>
     </table>
     <div id="additional-set">
@@ -236,17 +233,18 @@ $(window).resize(function(){
 </div>                
  
 <script type="text/javascript">
-    //var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    var width = $(window).width();
     var height = $(window).height();
-    //var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-    var offset = $('.cell:first').position().top + 10;  //offset from top
-    var t_size = $('.bingo-table tr:last td').length;   //num of cols
+    var width = $(window).width();
+    var pixr = window.getDevicePixelRatio();
+    var offset = parseInt($('.cell:first').position().top / pixr); //offset from top 
+    var t_size = $('.bingo-table tr:last td').length;    //num of cols
     if (height > width){
-        var size = parseInt(width / t_size) - 10;    
+        var size = parseInt(width / t_size);
     }else{
-        var size = parseInt((height-offset) / t_size) - 10;
+        var size = parseInt((height-offset) / t_size);
     }
+    width = size - 5;
+    height = parseInt(width * 0.9);
     document.write("w="+width+", h"+height+", offset="+offset+", size="+size);
 </script>
     
