@@ -243,9 +243,9 @@ $(window).resize(function(){
     var offset = $('.cell:first').position().top + 10;  //offset from top
     var t_size = $('.bingo-table tr:last td').length;   //num of cols
     if (height > width){
-        var size = parseInt(width / t_size);    
+        var size = parseInt(width / t_size) - 10;    
     }else{
-        var size = parseInt((height-offset) / t_size);
+        var size = parseInt((height-offset) / t_size) - 10;
     }
     document.write("w="+width+", h"+height+", offset="+offset+", size="+size);
 </script>
