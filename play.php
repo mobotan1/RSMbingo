@@ -185,7 +185,7 @@ $(window).resize(function(){
         </tr>
     </table>
     <div id="additional-set">
-        <a href="/">Back to the main page</a>
+        <a href="/">Back to the main page</a><br>
         
         <script type="text/javascript">
             var t_w = document.getElementById('tablebackground').offsetWidth;
