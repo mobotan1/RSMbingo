@@ -12,7 +12,8 @@
 </head>
     
 <body>
-<div class="index-title" id="tablebackground">&nbsp;
+<div class="index-title" id="tablebackground">
+    RSM Bingo Game
     <div class="celltitle" id="celltitle-play">
         <h1>Play</h1>
         <form action="play.php" method="get" id="play-form">
