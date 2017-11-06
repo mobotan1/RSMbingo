@@ -74,9 +74,12 @@
         <script type="text/javascript">
             var tablebackground_width = document.getElementById('tablebackground').offsetWidth;
             var celltitle_width = document.getElementById('celltitle-play').offsetWidth;
-            
+            var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+            var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
             document.write('tablebackground width=' + tablebackground_width + "<br>");
-            document.write('celltitle-play width=' + celltitle_width);
+            document.write('celltitle-play width=' + celltitle_width + "<br>");
+            document.write('screen width=' + w + ', height=' + h);
         </script>
     </div>
 
