@@ -71,25 +71,25 @@ $(document).ready(function(){
  });
 
 $(window).resize(function(){
-    var height = $(window).height();
-    var width = $(window).width();
+    var win_h = $(window).height();
+    var win_w = $(window).width();
     var pixr = window.getDevicePixelRatio();
     var offset = parseInt($('.cell:first').position().top) / pixr; //offset from top
     
-    console.log(pixr + " , " +$('.cell:first').position().top + ", " + offset);
+    //console.log(pixr + " , " +$('.cell:first').position().top + ", " + offset);
     
     var t_size = $('.bingo-table tr:last td').length;    //num of cols
-    if (height > width){
-        var size = parseInt(width / t_size);
-    }else{
-        var size = parseInt((height-offset) / t_size);
+    if (win_h > win_w) {
+        var size = parseInt(win_w / t_size)-5;
+    } else {
+        var size = parseInt((win_h - offset) / t_size)-5;
     }
     //console.log("w="+width+", h="+height + ", offset="+offset + ", size="+(size-10));
     
-    width = size - 5; //*1.2;
+    width = size; //*1.2;
     height = width * 0.9;
 
-    $('.cell, .header').css("width", width + "px");
+    $('.cell').css("width", width + "px");
     $('.cell').css("height", height + "px");
     $('.bingo-table').css("width", width*t_size + "px");
     setFontSize();
@@ -239,12 +239,10 @@ $(window).resize(function(){
     var offset = parseInt($('.cell:first').position().top / pixr); //offset from top 
     var t_size = $('.bingo-table tr:last td').length;    //num of cols
     if (height > width){
-        var size = parseInt(width / t_size);
+        var size = parseInt(width / t_size)-5;
     }else{
-        var size = parseInt((height-offset) / t_size);
+        var size = parseInt((height-offset) / t_size)-5;
     }
-    width = size - 5;
-    height = parseInt(width * 0.9);
     document.write("w="+width+", h"+height+", offset="+offset+", size="+size);
 </script>
     
