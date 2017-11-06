@@ -184,7 +184,7 @@
 <div id="instructions">
     <h1>Cards</h1>
     <? if ($is_update === TRUE) { ?>
-    <p>You can update this card.</p>
+    <p>You can update this game.</p>
     <p><strong>Instructions:</strong> 
     Change any words in the grid on the left. 
     Update a title of the game.
@@ -192,12 +192,12 @@
         
     <p>Or, you can create a new game</p>
     <form method="get" action="/edit.php">
-        <input type="submit" name="p" value="New card" id="submit" />
+        <input type="submit" name="p" value="New game" id="submit" />
     </form>
     
     
     <? } elseif ($is_update === FALSE) { ?>
-    <p>You can create a new card.</p>
+    <p>You can create a new game.</p>
     <p><strong>Instructions:</strong> 
     Type your words into the grid on the left. 
     You can give your game a title.
@@ -206,16 +206,16 @@
     
     
     <h1>Load</h1>
-    <p>You can load an existing card.</p>
+    <p>Load an existing game.</p>
     Type your game ID number: 
     <form action="<?php $_PHP_SELF ?>" method="get" id="load-form">
-    <input type='text' name='uid' value='' maxlength="6" placeholder="Card ID" />
+    <input type='text' name='uid' value='' maxlength="6" placeholder="Game ID" />
     <input type="submit" name="l" value="Load" id="submit" />
     </form>
     
     <h1>Play</h1>
     <form action="play.php" method="get" id="play-form">
-        <p>Card ID: <input type='text' size=6 name='uid' value='<? print($FORM_DATA["uid"]); ?>' maxlength="6" placeholder="Card ID" /></p>
+        <p>Game ID: <input type='text' size=6 name='uid' value='<? print($FORM_DATA["uid"]); ?>' maxlength="6" placeholder="Game ID" /></p>
         <p>Name: <input type='text' size=11 name='pname' value='' maxlength="16" placeholder="Your name" /></p>
         <input type="submit" name="p" value="Play" id="submit" />
     </form>
@@ -290,7 +290,7 @@
     <input type="submit" name="submit" value="<? if ($is_update == TRUE){ print("UPDATE");} else { print("Generate");} ?>" id="submit" />
     </form>
     
-    <p id="clear-link"><a href="#">Clear Card</a></p>
+    <p id="clear-link"><a href="#">Clear this game</a></p>
 </div>
 
 <div style="clear:both;"></div>
