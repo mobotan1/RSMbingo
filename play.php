@@ -141,9 +141,11 @@ $(window).resize(function(){
     <table class="bingo-table" id="tablebackground">
         <thead>
             <tr><th colspan="5">
-                <? print($pname .", "); ?>
-                Welcome to 
-                <? print("'" . $FORM_DATA["name"] . "'"); ?>    
+                Game:
+                <? print(" '" . $FORM_DATA["name"] . "'; "); ?>    
+                Player:
+                <? print($pname); ?>
+                
             </th></tr>
         </thead>
         <tr>

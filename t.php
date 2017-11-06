@@ -9,60 +9,7 @@
 <link rel="stylesheet" type="text/css" href="media/css/main.css" />
 
 <style type="text/css">
-#tablebackground {
-    background: rgb(118,214,255); /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(rgb(00,84,147), rgb(118,214,255)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(rgb(00,84,147), rgb(118,214,255)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(rgb(00,84,147), rgb(118,214,255)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(rgb(00,84,147), rgb(118,214,255)); /* Standard syntax */
-}
-
-.index-title {
-    margin: auto; 
-    //border-collapse: separate;
-    //border-spacing: 1% 1%;
-    width: 100%;
-    //min-width: 500px;
-    //max-width: 800px;
-    height: 100%;
-    text-align: center;
-    font-family:Avenir;
-    font-size:32px;
-    //padding: 1%;
-    color: white;
-}
-.celltitle{
-    //margin: 1% 3% 1% 3%;
-    margin: 1% auto; 
-    text-align: center;
-    vertical-align: middle;
-    font-family:Avenir;
-    font-size:24px;
-    min-width: 80%;
-    max-width: 90%;
-    //width: 90%;
-    min-height: 5em; //25%;  
-    background-color:#fff; 
-    border:2px solid black;
-    padding:5px;
-    border-collapse:collapse;
-    color: rgb(00,84,147);
-    //border-radius:2px;
-}
-#submit {
-    background-color:rgb(118,214,255);
-    font-size:18px;
-    color:#000;
-    font-family:Avenir;
-    border:none;
-    display:block;
-    margin:auto;
-    padding:5px;
-    margin-top:10px;
-    border-radius:10px;
-    text-align:center;
-    margin-bottom:10px;
-}table.bingo-table {
+table.bingo-table {
     margin: auto; 
     border-collapse: separate;
     border-spacing: 8px 8px;
@@ -116,44 +63,12 @@
     box-shadow: inset 0 0 0 1000px rgba(0, 150, 255, .9);
 }
 
-.call-sheet {
-    margin-left:50px;
-    list-style-type:none;
-}
-
-ol.call-sheet {
-    margin-top:20px;
-}
-
-.call-sheet img {
-    max-width:100px;
-    max-height:100px;
-    margin-top:5px;
-    display:block;
-}
-
-.call-sheet li {
-    font-size:18px;
-    padding-bottom:15px;
-    width:32%;
-    display:inline-block;
-    vertical-align:top;
-}
-
 #additional-set {
     text-align:center;
     border-top:1px solid black;
     border-bottom:1px solid black;
     padding:5px;
     font-weight:bold;
-}
-
-#tablebackground {
-    background: rgb(118,214,255); /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(rgb(00,84,147), rgb(118,214,255)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(rgb(00,84,147), rgb(118,214,255)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(rgb(00,84,147), rgb(118,214,255)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(rgb(00,84,147), rgb(118,214,255)); /* Standard syntax */
 }
 
 #instructions {
@@ -203,7 +118,7 @@ ol.call-sheet {
     //border-spacing: 1% 1%;
     width: 100%;
     //min-width: 500px;
-    //max-width: 800px;
+    max-width: 800px;
     height: 100%;
     text-align: center;
     font-family:Avenir;
@@ -230,18 +145,22 @@ ol.call-sheet {
     //border-radius:2px;
 }
 
+#tablebackground {
+    background: rgb(118,214,255); /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(rgb(00,84,147), rgb(118,214,255)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgb(00,84,147), rgb(118,214,255)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgb(00,84,147), rgb(118,214,255)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgb(00,84,147), rgb(118,214,255)); /* Standard syntax */
+}
 ::-webkit-input-placeholder {
    text-align: center;
 }
-
 :-moz-placeholder { /* Firefox 18- */
    text-align: center;  
 }
-
 ::-moz-placeholder {  /* Firefox 19+ */
    text-align: center;  
 }
-
 :-ms-input-placeholder {  
    text-align: center; 
 }
