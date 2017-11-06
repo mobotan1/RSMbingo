@@ -72,17 +72,25 @@ $(document).ready(function(){
  });
 
 $(window).resize(function(){
-    var height = $(window).height();
-    var width = $(window).width();
-
-    var offset = $('.cell:first').position().top + 10;
-    var size = parseInt((Math.min(height, width)-offset) / (1.0*$('.bingo-table tr:last td').length));
-    width = size*1.25;
+    //var height = $(window).height();
+    //var width = $(window).width
+    var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    var offset = $('.cell:first').position().top + 10;  //offset from top
+    var t_size = $('.bingo-table tr:last td').length;   //num of cols
+    if (height > width){
+        var size = parseInt(width / t_size);    
+    }else{
+        var size = parseInt((height-offset) / t_size);
+    }
+    //console.log("size="+size);
+    
+    width = size; //*1.2;
     height = width * 0.85;
 
     $('.cell, .header').css("width", width + "px");
     $('.cell').css("height", height + "px");
-    $('.bingo-table').css("width", width*$('.bingo-table tr:last td').length + "px");
+    $('.bingo-table').css("width", width*t_size + "px");
     setFontSize();
     
     //set font size of title text to fit in one row
@@ -200,12 +208,12 @@ $(window).resize(function(){
         <a href="/">Back to the main page</a><br>
         
         <script type="text/javascript">
-            var t_w = document.getElementById('tablebackground').offsetWidth;
-            var c_w = document.getElementById('w00').offsetWidth;
-            var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-            var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+            //var t_w = document.getElementById('tablebackground').offsetWidth;
+            //var c_w = document.getElementById('w00').offsetWidth;
+            //var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+            //var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
             
-            document.write(t_w + ", " + c_w + ", " + w + ", " + h + ", ");
+            //document.write(t_w + ", " + c_w + ", " + w + ", " + h + ", ");
         </script>
     </div>
 
@@ -223,20 +231,7 @@ $(window).resize(function(){
     <? print(" '" . $FORM_DATA["name"] . "'; "); ?>    
     Player:
     <? print($pname); ?>
-</div>
-   
-    
-    
-<!-- write a title with fitting text size -->
-<script>
-    //var c = document.getElementById("titlethcell");
-    //var ctx = c.getContext("2d");
-    //ctx.font = "30px Arial";
-    //var txt = "Hello World"
-    //ctx.fillText("width:" + ctx.measureText(txt).width, 10, 50);
-    //ctx.fillText(txt, 10, 100);
-</script>
-                
+</div>                
                 
 </body>
 </html>
