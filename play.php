@@ -72,10 +72,10 @@ $(document).ready(function(){
  });
 
 $(window).resize(function(){
-    //var height = $(window).height();
+    var height = $(window).height();
     var width = $(window).width();
     //var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    //var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     var offset = $('.cell:first').position().top + 10;  //offset from top
     var t_size = $('.bingo-table tr:last td').length;   //num of cols
     if (height > width){
@@ -238,7 +238,8 @@ $(window).resize(function(){
 <script type="text/javascript">
     //var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     var width = $(window).width();
-    var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    var height = $(window).height();
+    //var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     var offset = $('.cell:first').position().top + 10;  //offset from top
     var t_size = $('.bingo-table tr:last td').length;   //num of cols
     if (height > width){
