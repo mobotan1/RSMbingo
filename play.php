@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <title>RSM Bingo | Play</title>
 <meta name="description" content="" />
 
@@ -80,18 +80,25 @@ $(window).resize(function(){
     
     var t_size = $('.bingo-table tr:last td').length;    //num of cols
     if (win_h > win_w) {
-        var size = parseInt(win_w / t_size)-5;
+        var size = parseInt(win_w / t_size)-2;
     } else {
-        var size = parseInt((win_h - offset) / t_size)-5;
+        var size = parseInt((win_h - offset) / t_size) - 2;
     }
     //console.log("w="+width+", h="+height + ", offset="+offset + ", size="+(size-10));
     
     width = size; //*1.2;
     height = width * 0.9;
 
+    //resize table and cells
     $('.cell').css("width", width + "px");
     $('.cell').css("height", height + "px");
     $('.bingo-table').css("width", width*t_size + "px");
+    
+    // resize viewport
+    //$('meta[name=viewport]').attr('content','width='+win_w + ','+'minimum-scale=1');
+    //var viewport = document.querySelector("meta[name=viewport]");
+    //viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
+
     setFontSize();
     
     //set font size of title text to fit in one row
@@ -168,52 +175,43 @@ $(window).resize(function(){
             </th></tr>
         </thead>
         <tr>
-            <td class="cell" style="" id="w00"><? print($FORM_DATA["word-0-0"]); ?></td>
-            <td class="cell" style="" id="w01"><? print($FORM_DATA["word-0-1"]); ?></td>
-            <td class="cell" style="" id="w02"><? print($FORM_DATA["word-0-2"]); ?></td>
-            <td class="cell" style="" id="w03"><? print($FORM_DATA["word-0-3"]); ?></td>
-            <td class="cell" style="" id="w04"><? print($FORM_DATA["word-0-4"]); ?></td>
+            <td class="cell" id="w00"><? print($FORM_DATA["word-0-0"]); ?></td>
+            <td class="cell" id="w01"><? print($FORM_DATA["word-0-1"]); ?></td>
+            <td class="cell" id="w02"><? print($FORM_DATA["word-0-2"]); ?></td>
+            <td class="cell" id="w03"><? print($FORM_DATA["word-0-3"]); ?></td>
+            <td class="cell" id="w04"><? print($FORM_DATA["word-0-4"]); ?></td>
         </tr>                         
         <tr>                                    
-            <td class="cell" style="" id="w10"><? print($FORM_DATA["word-1-0"]); ?></td>                                    
-            <td class="cell" style="" id="w11"><? print($FORM_DATA["word-1-1"]); ?></td>                                    
-            <td class="cell" style="" id="w12"><? print($FORM_DATA["word-1-2"]); ?></td>
-            <td class="cell" style="" id="w13"><? print($FORM_DATA["word-1-3"]); ?></td>
-            <td class="cell" style="" id="w14"><? print($FORM_DATA["word-1-4"]); ?></td>
+            <td class="cell" id="w10"><? print($FORM_DATA["word-1-0"]); ?></td>                                    
+            <td class="cell" id="w11"><? print($FORM_DATA["word-1-1"]); ?></td>                                    
+            <td class="cell" id="w12"><? print($FORM_DATA["word-1-2"]); ?></td>
+            <td class="cell" id="w13"><? print($FORM_DATA["word-1-3"]); ?></td>
+            <td class="cell" id="w14"><? print($FORM_DATA["word-1-4"]); ?></td>
         </tr>
         <tr>
-            <td class="cell" style="" id="w20"><? print($FORM_DATA["word-2-0"]); ?></td>
-            <td class="cell" style="" id="w21"><? print($FORM_DATA["word-2-1"]); ?></td>
-            <td class="cell" style="" id="w22"><? print($FORM_DATA["word-2-2"]); ?></td>
-            <td class="cell" style="" id="w23"><? print($FORM_DATA["word-2-3"]); ?></td>
-            <td class="cell" style="" id="w24"><? print($FORM_DATA["word-2-4"]); ?></td>
+            <td class="cell" id="w20"><? print($FORM_DATA["word-2-0"]); ?></td>
+            <td class="cell" id="w21"><? print($FORM_DATA["word-2-1"]); ?></td>
+            <td class="cell" id="w22"><? print($FORM_DATA["word-2-2"]); ?></td>
+            <td class="cell" id="w23"><? print($FORM_DATA["word-2-3"]); ?></td>
+            <td class="cell" id="w24"><? print($FORM_DATA["word-2-4"]); ?></td>
         </tr>
         <tr>
-            <td class="cell" style="" id="w30"><? print($FORM_DATA["word-3-0"]); ?></td>
-            <td class="cell" style="" id="w31"><? print($FORM_DATA["word-3-1"]); ?></td>
-            <td class="cell" style="" id="w32"><? print($FORM_DATA["word-3-2"]); ?></td>
-            <td class="cell" style="" id="w33"><? print($FORM_DATA["word-3-3"]); ?></td>
-            <td class="cell" style="" id="w34"><? print($FORM_DATA["word-3-4"]); ?></td>
+            <td class="cell" id="w30"><? print($FORM_DATA["word-3-0"]); ?></td>
+            <td class="cell" id="w31"><? print($FORM_DATA["word-3-1"]); ?></td>
+            <td class="cell" id="w32"><? print($FORM_DATA["word-3-2"]); ?></td>
+            <td class="cell" id="w33"><? print($FORM_DATA["word-3-3"]); ?></td>
+            <td class="cell" id="w34"><? print($FORM_DATA["word-3-4"]); ?></td>
         </tr>
         <tr>
-            <td class="cell" style="" id="w40"><? print($FORM_DATA["word-4-0"]); ?></td>
-            <td class="cell" style="" id="w41"><? print($FORM_DATA["word-4-1"]); ?></td>
-            <td class="cell" style="" id="w42"><? print($FORM_DATA["word-4-2"]); ?></td>
-            <td class="cell" style="" id="w43"><? print($FORM_DATA["word-4-3"]); ?></td>
-            <td class="cell" style="" id="w44"><? print($FORM_DATA["word-4-4"]); ?></td>
+            <td class="cell" id="w40"><? print($FORM_DATA["word-4-0"]); ?></td>
+            <td class="cell" id="w41"><? print($FORM_DATA["word-4-1"]); ?></td>
+            <td class="cell" id="w42"><? print($FORM_DATA["word-4-2"]); ?></td>
+            <td class="cell" id="w43"><? print($FORM_DATA["word-4-3"]); ?></td>
+            <td class="cell" id="w44"><? print($FORM_DATA["word-4-4"]); ?></td>
         </tr>
     </table>
     <div id="additional-set">
         <a href="/">Back to the main page</a><br>
-        
-        <script type="text/javascript">
-            //var t_w = document.getElementById('tablebackground').offsetWidth;
-            //var c_w = document.getElementById('w00').offsetWidth;
-            //var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-            //var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-            
-            //document.write(t_w + ", " + c_w + ", " + w + ", " + h + ", ");
-        </script>
     </div>
 
 <div id="hidden">
