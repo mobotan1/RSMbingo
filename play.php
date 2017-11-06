@@ -79,7 +79,7 @@ $(window).resize(function(){
     var offset = $('.cell:first').position().top;  //offset from top
     var t_size = $('.bingo-table tr:last td').length;   //num of cols
     if (height > width){
-        var size = parseInt(width / t_size);    
+        var size = parseInt(width / t_size);
     }else{
         var size = parseInt((height-offset) / t_size);
     }
@@ -87,7 +87,7 @@ $(window).resize(function(){
     console.log("offset="+offset);
     console.log("size="+size);
     
-    width = size; //*1.2;
+    width = size-10; //*1.2;
     height = width * 0.85;
 
     $('.cell, .header').css("width", width + "px");

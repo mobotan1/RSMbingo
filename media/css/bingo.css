@@ -1,7 +1,7 @@
 table.bingo-table {
     margin: auto; 
     border-collapse: separate;
-    border-spacing: 8px 8px;
+    border-spacing: 5px 5px;
     width: 750px;
 }
 .bingo-table th {
