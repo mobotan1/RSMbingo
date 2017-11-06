@@ -26,7 +26,7 @@
         <h1>Edit</h1>
         <h2>Edit existing games</h2>
         <form action="edit.php" method="get" id="load-form">    
-            <input type='text' name='uid' size=6 value='' maxlength="6" placeholder="Card ID" />
+            <input type='text' name='uid' size=6 value='' maxlength="6" placeholder="Game ID" />
             <input type="submit" name="l" value="Load" id="submit" />
         </form>
     </div>
@@ -35,7 +35,7 @@
             <h1>Cards</h1>
             <h2>Create a new game
                 <form method="get" action="/edit.php">
-                    <button type="submit" id="submit">New card</button>
+                    <button type="submit" id="submit">New game</button>
                 </form>
             </h2>
     </div>
