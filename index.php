@@ -13,7 +13,7 @@
     
 <body>
 <div class="index-title" id="tablebackground">&nbsp;
-    <div class="celltitle">
+    <div class="celltitle" id="celltitle-play">
         <h1>Play</h1>
         <form action="play.php" method="get" id="play-form">
             <h2>
@@ -22,7 +22,7 @@
             <input type="submit" name="p" value="Play" id="submit" />
         </form>
     </div>
-    <div class="celltitle">
+    <div class="celltitle" id="celltitle-load">
         <h1>Edit</h1>
         <h2>Edit existing games</h2>
         <form action="edit.php" method="get" id="load-form">    
@@ -30,7 +30,7 @@
             <input type="submit" name="l" value="Load" id="submit" />
         </form>
     </div>
-    <div class="celltitle">
+    <div class="celltitle" id="celltitle-new">
         <td class="celltitle">      
             <h1>Cards</h1>
             <h2>Create a new game
@@ -69,6 +69,16 @@
         </div>
     &nbsp;
 </div>
+    
+    <div align="center">
+        <script type="text/javascript">
+            var tablebackground_width = document.getElementById('tablebackground').offsetWidth;
+            var celltitle_width = document.getElementById('celltitle-play').offsetWidth;
+            
+            document.write('tablebackground width=' + tablebackground_width + "<br>");
+            document.write('celltitle-play width=' + celltitle_width);
+        </script>
+    </div>
 
 </body>
 </html>
