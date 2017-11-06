@@ -184,7 +184,18 @@ $(window).resize(function(){
             <td class="cell  " style="" id="w44"><? print($FORM_DATA["word-4-4"]); ?></td>
         </tr>
     </table>
-    <p id="additional-set"><a href="/">Back to the main page</a></p>
+    <div id="additional-set">
+        <a href="/">Back to the main page</a>
+        
+        <script type="text/javascript">
+            var t_w = document.getElementById('tablebackground').offsetWidth;
+            var c_w = document.getElementById('w00').offsetWidth;
+            var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+            var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+            
+            document.write(t_w + ", " + c_w + ", " + w + ", " + h + ", ");
+        </script>
+    </div>
 
 <div id="hidden">
     <!-- used to get the CSS info, so don't put anything in here -->
