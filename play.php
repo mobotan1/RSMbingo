@@ -12,6 +12,7 @@
 
 <script type="text/javascript" src="media/js/jquery.js"></script>
 <script type="text/javascript" src="media/js/render.js"></script>
+<script type="text/javascript" src="media/js/fittext.js"></script>
 
 <script type="text/javascript">
 function CreateArr(n) {
@@ -66,7 +67,7 @@ $(document).ready(function(){
         });
         if (checkRes(x_arr, n_rows) === 1) { alert ("You won!"); }
         
-    });
+    });    
     $(window).resize();
  });
 
@@ -76,13 +77,25 @@ $(window).resize(function(){
 
     var offset = $('.cell:first').position().top + 10;
     var size = parseInt((Math.min(height, width)-offset) / (1.0*$('.bingo-table tr:last td').length));
-    width = size;
+    width = size*1.5;
     height = width * 0.85;
 
     $('.cell, .header').css("width", width + "px");
     $('.cell').css("height", height + "px");
     $('.bingo-table').css("width", width*$('.bingo-table tr:last td').length + "px");
     setFontSize();
+    
+    //set font size of title text to fit in one row
+    //$("#titlethcell").fitText(1.6);
+    //$("#titlethcell").fitText(1.1, { minFontSize: '12px', maxFontSize: '32px' });   
+    var th_cell = document.getElementById('titlethcell');
+    var fstyle = window.getComputedStyle(th_cell, null).getPropertyValue('font-size');
+    var th_fsize = parseFloat(fstyle); 
+    var tst_w = (document.getElementById("th-test").clientWidth + 1);
+    var th_w = th_cell.offsetWidth;
+    var fin_size = Math.ceil(((th_w / tst_w) * th_fsize)*0.9);
+    th_cell.style.fontSize = fin_size + "px";
+    //console.log("fsize=" + th_fsize + ", tst_w=" + tst_w + ", th_w=" + th_w + ", fs=" + fin_size);
 });
 </script>
 </head>
@@ -140,12 +153,11 @@ $(window).resize(function(){
     
     <table class="bingo-table" id="tablebackground">
         <thead>
-            <tr><th colspan="5">
+            <tr><th colspan="5" id="titlethcell">
                 Game:
                 <? print(" '" . $FORM_DATA["name"] . "'; "); ?>    
                 Player:
                 <? print($pname); ?>
-                
             </th></tr>
         </thead>
         <tr>
@@ -205,5 +217,26 @@ $(window).resize(function(){
     <!-- used to test if a single word overflows -->
     <span id="width-test" class="cell "></span>
 </div>
+    
+<div id="th-test">
+    Game:
+    <? print(" '" . $FORM_DATA["name"] . "'; "); ?>    
+    Player:
+    <? print($pname); ?>
+</div>
+   
+    
+    
+<!-- write a title with fitting text size -->
+<script>
+    //var c = document.getElementById("titlethcell");
+    //var ctx = c.getContext("2d");
+    //ctx.font = "30px Arial";
+    //var txt = "Hello World"
+    //ctx.fillText("width:" + ctx.measureText(txt).width, 10, 50);
+    //ctx.fillText(txt, 10, 100);
+</script>
+                
+                
 </body>
 </html>

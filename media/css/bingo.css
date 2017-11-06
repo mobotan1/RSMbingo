@@ -12,6 +12,15 @@ table.bingo-table {
     padding-top:5px;
     padding-bottom:5px;
 }
+//.bingo-table #titlethcell{
+//    font-family:Avenir;
+//    font-size: 2vw;
+//    color: yellow;
+//    background-color:transparent;
+//    padding-top:5px;
+//    padding-bottom:5px;
+//}
+
 .bingo-table td, .bingo-table th {
     border-collapse:collapse;
     text-align:center;
@@ -46,6 +55,16 @@ table.bingo-table {
 #hidden {
     position:absolute;
     top:-5000px;
+}
+
+#th-test {
+    position: absolute;
+    visibility: hidden;
+    height: auto;
+    width: auto;
+    font-family:Avenir;
+    font-size:32px;
+    white-space: nowrap; /* Thanks to Herb Caudill comment */
 }
 
 .highlighted {
