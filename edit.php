@@ -14,8 +14,7 @@
 <script type="text/javascript" src="media/js/tooltip.js"></script>
 </head>
 <body>
-    
-    
+
 <?
     require 'vendor/autoload.php';
     use Aws\S3\S3Client;
@@ -176,7 +175,6 @@
     //echo "<a href='" . $result['ObjectURL'] . "'>link</a>";
 ?>
     
-    
 <div id="wrapper">
     
 <script src="media/js/home.js"></script>
@@ -231,8 +229,8 @@
                 <th colspan="3" class="colspan"><input id="name" maxlength="64" name="name" type="text" value="<? print($FORM_DATA["name"]); ?>" /></th>
                 <th><select id="id_size" name="size">
                         <option value="5">5x5</option>
-                        <option value="4">4x4</option>
-                        <option value="3">3x3</option>
+                        <option value="4" <?php echo (intval($FORM_DATA["size"]) == 4 ? ' selected="selected"' : ''); ?>>4x4</option>
+                        <option value="3" <?php echo (intval($FORM_DATA["size"]) == 3 ? ' selected="selected"' : ''); ?>>3x3</option>
                     </select>
                 </th>
             </tr>

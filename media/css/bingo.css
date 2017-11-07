@@ -12,14 +12,19 @@ table.bingo-table {
     padding-top:5px;
     padding-bottom:5px;
 }
-//.bingo-table #titlethcell{
-//    font-family:Avenir;
-//    font-size: 2vw;
-//    color: yellow;
-//    background-color:transparent;
-//    padding-top:5px;
-//    padding-bottom:5px;
-//}
+.bingo-table #titlethcell{
+    font-family:Avenir;
+    font-size: 32px;
+    color: white;
+    background-color:transparent;
+    padding-top:5px;
+    padding-bottom:5px;
+    
+    //position: absolute;
+    //height: auto;
+    //width: auto;
+    //white-space: nowrap;
+}
 
 .bingo-table td, .bingo-table th {
     border-collapse:collapse;
@@ -54,13 +59,14 @@ table.bingo-table {
 
 #hidden {
     position:absolute;
-    visibility: hidden;
-//    top:-5000px;
+    //visibility: hidden;
+    top:-5000px;
 }
 
 #th-test {
     position: absolute;
     visibility: hidden;
+    top:-5000px;
     height: auto;
     width: auto;
     font-family:Avenir;

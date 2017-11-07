@@ -102,14 +102,14 @@ $(window).resize(function(){
     setFontSize();
     
     //set font size of title text to fit in one row
-     var th_cell = document.getElementById('titlethcell');
+    var th_cell = document.getElementById('titlethcell');
     var fstyle = window.getComputedStyle(th_cell, null).getPropertyValue('font-size');
     var th_fsize = parseFloat(fstyle); 
     var tst_w = (document.getElementById("th-test").clientWidth + 1);
     var th_w = th_cell.offsetWidth;
     var fin_size = Math.ceil(((th_w / tst_w) * th_fsize)*0.9);
     th_cell.style.fontSize = fin_size + "px";
-    //console.log("fsize=" + th_fsize + ", tst_w=" + tst_w + ", th_w=" + th_w + ", fs=" + fin_size);
+    //console.log("title size=" + th_fsize + "px, width of test=" + tst_w + ", width of title=" + th_w + ", fs=" + fin_size);
 });
 </script>
 </head>
@@ -119,7 +119,19 @@ $(window).resize(function(){
     require 'vendor/autoload.php';
     //use Aws\S3\S3Client;
     //use Aws\S3\Exception\S3Exception;
-    
+
+    function shuffle_assoc($list) { 
+        $keys = array_keys($list); 
+        $vals = array_values($list);
+        shuffle($keys); 
+        $random = array(); 
+        foreach ($keys as $key) { 
+            $random[$key] = array_shift($vals);
+        }
+        return $random; 
+    } 
+
+
     // Instantiate the client.
     $bucket = 'rsm-bingo';
     $s3 = new Aws\S3\S3Client(['region'  => 'eu-west-1','version' => 'latest']);
@@ -133,43 +145,45 @@ $(window).resize(function(){
             $Loaded_Data = json_decode($res_s3->get("Body"), true);    
                
             //Fill FORM_DATA var with data from _GET
-            $FORM_DATA["name"] = $Loaded_Data["name"];
-            $FORM_DATA["size"] = $Loaded_Data["size"];
+            $f_name = $Loaded_Data["name"];
+            $f_size = $Loaded_Data["size"];
             $FORM_DATA["word-0-0"] = $Loaded_Data["word-0-0"];
             $FORM_DATA["word-0-1"] = $Loaded_Data["word-0-1"];
             $FORM_DATA["word-0-2"] = $Loaded_Data["word-0-2"];
-            $FORM_DATA["word-0-3"] = $Loaded_Data["word-0-3"];
-            $FORM_DATA["word-0-4"] = $Loaded_Data["word-0-4"];
+            if(isset($Loaded_Data["word-0-3"])) { $FORM_DATA["word-0-3"] = $Loaded_Data["word-0-3"]; }
+            if(isset($Loaded_Data["word-0-4"])) { $FORM_DATA["word-0-4"] = $Loaded_Data["word-0-4"]; }
             $FORM_DATA["word-1-0"] = $Loaded_Data["word-1-0"];
             $FORM_DATA["word-1-1"] = $Loaded_Data["word-1-1"];
             $FORM_DATA["word-1-2"] = $Loaded_Data["word-1-2"];
-            $FORM_DATA["word-1-3"] = $Loaded_Data["word-1-3"];
-            $FORM_DATA["word-1-4"] = $Loaded_Data["word-1-4"];
+            if(isset($Loaded_Data["word-1-3"])) { $FORM_DATA["word-1-3"] = $Loaded_Data["word-1-3"]; }
+            if(isset($Loaded_Data["word-1-4"])) { $FORM_DATA["word-1-4"] = $Loaded_Data["word-1-4"]; }
             $FORM_DATA["word-2-0"] = $Loaded_Data["word-2-0"];
             $FORM_DATA["word-2-1"] = $Loaded_Data["word-2-1"];
             $FORM_DATA["word-2-2"] = $Loaded_Data["word-2-2"];
-            $FORM_DATA["word-2-3"] = $Loaded_Data["word-2-3"];
-            $FORM_DATA["word-2-4"] = $Loaded_Data["word-2-4"];
-            $FORM_DATA["word-3-0"] = $Loaded_Data["word-3-0"];
-            $FORM_DATA["word-3-1"] = $Loaded_Data["word-3-1"];
-            $FORM_DATA["word-3-2"] = $Loaded_Data["word-3-2"];
-            $FORM_DATA["word-3-3"] = $Loaded_Data["word-3-3"];
-            $FORM_DATA["word-3-4"] = $Loaded_Data["word-3-4"];
-            $FORM_DATA["word-4-0"] = $Loaded_Data["word-4-0"];
-            $FORM_DATA["word-4-1"] = $Loaded_Data["word-4-1"];
-            $FORM_DATA["word-4-2"] = $Loaded_Data["word-4-2"];
-            $FORM_DATA["word-4-3"] = $Loaded_Data["word-4-3"];
-            $FORM_DATA["word-4-4"] = $Loaded_Data["word-4-4"];
+            if(isset($Loaded_Data["word-2-3"])) { $FORM_DATA["word-2-3"] = $Loaded_Data["word-2-3"]; }
+            if(isset($Loaded_Data["word-2-4"])) { $FORM_DATA["word-2-4"] = $Loaded_Data["word-2-4"]; }
+            if(isset($Loaded_Data["word-3-0"])) { $FORM_DATA["word-3-0"] = $Loaded_Data["word-3-0"]; }
+            if(isset($Loaded_Data["word-3-1"])) { $FORM_DATA["word-3-1"] = $Loaded_Data["word-3-1"]; }
+            if(isset($Loaded_Data["word-3-2"])) { $FORM_DATA["word-3-2"] = $Loaded_Data["word-3-2"]; }
+            if(isset($Loaded_Data["word-3-3"])) { $FORM_DATA["word-3-3"] = $Loaded_Data["word-3-3"]; }
+            if(isset($Loaded_Data["word-3-4"])) { $FORM_DATA["word-3-4"] = $Loaded_Data["word-3-4"]; }
+            if(isset($Loaded_Data["word-4-0"])) { $FORM_DATA["word-4-0"] = $Loaded_Data["word-4-0"]; }
+            if(isset($Loaded_Data["word-4-1"])) { $FORM_DATA["word-4-1"] = $Loaded_Data["word-4-1"]; }
+            if(isset($Loaded_Data["word-4-2"])) { $FORM_DATA["word-4-2"] = $Loaded_Data["word-4-2"]; }
+            if(isset($Loaded_Data["word-4-3"])) { $FORM_DATA["word-4-3"] = $Loaded_Data["word-4-3"]; }
+            if(isset($Loaded_Data["word-4-4"])) { $FORM_DATA["word-4-4"] = $Loaded_Data["word-4-4"]; }
         }
         if ($pname == "") { $pname = "Noname"; }
     }
+    //shuffle data
+    $FORM_DATA = shuffle_assoc($FORM_DATA);
 ?> 
     
     <table class="bingo-table" id="tablebackground">
         <thead>
             <tr><th colspan="5" id="titlethcell">
                 Game:
-                <? print(" '" . $FORM_DATA["name"] . "'; "); ?>    
+                <? print(" '" . $f_name . "'; "); ?>    
                 Player:
                 <? print($pname); ?>
             </th></tr>
@@ -178,30 +192,32 @@ $(window).resize(function(){
             <td class="cell" id="w00"><? print($FORM_DATA["word-0-0"]); ?></td>
             <td class="cell" id="w01"><? print($FORM_DATA["word-0-1"]); ?></td>
             <td class="cell" id="w02"><? print($FORM_DATA["word-0-2"]); ?></td>
-            <td class="cell" id="w03"><? print($FORM_DATA["word-0-3"]); ?></td>
-            <td class="cell" id="w04"><? print($FORM_DATA["word-0-4"]); ?></td>
+            <? if ($f_size > 3) { ?><td class="cell" id="w03"><? print($FORM_DATA["word-0-3"]); ?></td><? } ?>
+            <? if ($f_size == 5) { ?><td class="cell" id="w04"><? print($FORM_DATA["word-0-4"]); ?></td><? } ?>
         </tr>                         
         <tr>                                    
             <td class="cell" id="w10"><? print($FORM_DATA["word-1-0"]); ?></td>                                    
             <td class="cell" id="w11"><? print($FORM_DATA["word-1-1"]); ?></td>                                    
             <td class="cell" id="w12"><? print($FORM_DATA["word-1-2"]); ?></td>
-            <td class="cell" id="w13"><? print($FORM_DATA["word-1-3"]); ?></td>
-            <td class="cell" id="w14"><? print($FORM_DATA["word-1-4"]); ?></td>
+            <? if ($f_size > 3) { ?><td class="cell" id="w13"><? print($FORM_DATA["word-1-3"]); ?></td><? } ?>
+            <? if ($f_size == 5) { ?><td class="cell" id="w14"><? print($FORM_DATA["word-1-4"]); ?></td><? } ?>
         </tr>
         <tr>
             <td class="cell" id="w20"><? print($FORM_DATA["word-2-0"]); ?></td>
             <td class="cell" id="w21"><? print($FORM_DATA["word-2-1"]); ?></td>
             <td class="cell" id="w22"><? print($FORM_DATA["word-2-2"]); ?></td>
-            <td class="cell" id="w23"><? print($FORM_DATA["word-2-3"]); ?></td>
-            <td class="cell" id="w24"><? print($FORM_DATA["word-2-4"]); ?></td>
+            <? if ($f_size > 3) { ?><td class="cell" id="w23"><? print($FORM_DATA["word-2-3"]); ?></td><? } ?>
+            <? if ($f_size == 5) { ?><td class="cell" id="w24"><? print($FORM_DATA["word-2-4"]); ?></td><? } ?>
         </tr>
+        <? if ($f_size > 3) { ?>
         <tr>
             <td class="cell" id="w30"><? print($FORM_DATA["word-3-0"]); ?></td>
             <td class="cell" id="w31"><? print($FORM_DATA["word-3-1"]); ?></td>
             <td class="cell" id="w32"><? print($FORM_DATA["word-3-2"]); ?></td>
             <td class="cell" id="w33"><? print($FORM_DATA["word-3-3"]); ?></td>
-            <td class="cell" id="w34"><? print($FORM_DATA["word-3-4"]); ?></td>
+           <? if ($f_size == 5) { ?><td class="cell" id="w34"><? print($FORM_DATA["word-3-4"]); ?></td><? } ?>
         </tr>
+        <? } if ($f_size == 5) { ?>
         <tr>
             <td class="cell" id="w40"><? print($FORM_DATA["word-4-0"]); ?></td>
             <td class="cell" id="w41"><? print($FORM_DATA["word-4-1"]); ?></td>
@@ -209,6 +225,7 @@ $(window).resize(function(){
             <td class="cell" id="w43"><? print($FORM_DATA["word-4-3"]); ?></td>
             <td class="cell" id="w44"><? print($FORM_DATA["word-4-4"]); ?></td>
         </tr>
+        <? } ?>
     </table>
     <div id="additional-set">
         <a href="/">Back to the main page</a><br>
@@ -225,24 +242,22 @@ $(window).resize(function(){
     
 <div id="th-test">
     Game:
-    <? print(" '" . $FORM_DATA["name"] . "'; "); ?>    
+    <? print(" '" . $f_name . "'; "); ?>    
     Player:
     <? print($pname); ?>
-</div>                
- 
+</div>
 <script type="text/javascript">
-    var height = $(window).height();
-    var width = $(window).width();
-    var pixr = window.getDevicePixelRatio();
-    var offset = parseInt($('.cell:first').position().top / pixr); //offset from top 
-    var t_size = $('.bingo-table tr:last td').length;    //num of cols
-    if (height > width){
-        var size = parseInt(width / t_size)-5;
-    }else{
-        var size = parseInt((height-offset) / t_size)-5;
-    }
+    //var height = $(window).height();
+    //var width = $(window).width();
+    //var pixr = window.getDevicePixelRatio();
+    //var offset = parseInt($('.cell:first').position().top / pixr); //offset from top 
+    //var t_size = $('.bingo-table tr:last td').length;    //num of cols
+    //if (height > width){
+    //    var size = parseInt(width / t_size)-5;
+    //}else{
+    //    var size = parseInt((height-offset) / t_size)-5;
+    //}
     //document.write("w="+width+", h"+height+", offset="+offset+", size="+size);
 </script>
-    
 </body>
 </html>
